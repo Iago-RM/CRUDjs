@@ -1,13 +1,30 @@
 async function getApi() {
-    const dadosApi = await fetch("https://school-system-spi.onrender.com/api/alunos")
-        const dadosJson = await dadosApi.json()
-        return dadosJson
+    try {
+        const dadosApi = await fetch("https://school-system-spi.onrender.com/api/alunos")
+            const dadosJson = await dadosApi.json()
+            return dadosJson
+
+    } catch(error) {
+        alert(error)
+        console.log('não funfo',error)
+    }
     
 }
-
-function readApi(){
-    getApi().then((dados) => {
+const btn = document.getElementById("submit-aluno")
+const lista = document.getElementById("lista-aluno")
+const formulario = document.getElementById("aluno-get")
+async function readApi(){
+    await getApi().then((dados) => {
         console.log(dados)
+        for(var i in dados){
+            
+        }
+        lista.innerHTML = dados
     })
 }
-readApi();
+
+
+formulario.addEventListener('submit', (event) => {
+    event.preventDefault()
+    readApi()
+})

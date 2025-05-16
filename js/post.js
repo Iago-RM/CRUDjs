@@ -19,5 +19,10 @@ aluno1 = {
     "nota_segundo_semestre": 7.4,
     "turma_id": 1
   }
+const formulario = document.getElementById("aluno-post")
+formulario.addEventListener('submit', (event) => {
+    event.preventDefault()
+    postAluno(aluno1)
+})
 
-postAluno(aluno1)
+
